@@ -13,8 +13,14 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Install Tini - https://github.com/krallin/tini
 
-RUN apk add --no-cache tini git openssh-client
+RUN apk add --no-cache tini git openssh-client icu-dev
 
+# Install PHP extensions
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-configure pcntl --enable-pcntl \
+    && docker-php-ext-install intl pcntl \
+    && docker-php-ext-enable sodium
+    
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN COMPOSER_ALLOW_SUPERUSER=1 \

@@ -1,6 +1,7 @@
 name: Watch
 
 on:
+  push:
   schedule:
     - cron: '30 */4 * * *'
 
@@ -30,7 +31,7 @@ jobs:
         run: echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Build images
-        run: docker build -t vimeo/psalm-github-actions:${{ steps.fetch_version.outputs.last }} .
+        run: docker build -t rwneal/psalm-github-action:${{ steps.fetch_version.outputs.last }} -t rwneal/psalm-github-action:latest .
 
       - name: Publish
-        run: docker push vimeo/psalm-github-actions:${{ steps.fetch_version.outputs.last }}
+        run: docker push --all-tags rwneal/psalm-github-action

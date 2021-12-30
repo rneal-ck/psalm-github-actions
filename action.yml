@@ -37,8 +37,11 @@ inputs:
   ssh_domain:
     description: The domain to gather SSH public keys for (automatic for github.com, gitlab.com, bitbucket.org)
     required: false
+  working_directory:
+    description: Working directory with source code to run static analysis on
+    required: false
 
 
 runs:
   using: 'docker'
-  image: 'docker://vimeo/psalm-github-actions'
+  image: 'docker://rwneal/psalm-github-action'

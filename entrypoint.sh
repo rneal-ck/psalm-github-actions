@@ -42,7 +42,11 @@ then
     echo "OK"
     echo "::endgroup::"
 else
-	  echo "No private keys supplied"
+    echo "No private keys supplied"
+fi
+
+if [ -n "$INPUT_WORKING_DIRECTORY" ]; then
+    cd "$INPUT_WORKING_DIRECTORY"
 fi
 
 if test -f "composer.json"; then

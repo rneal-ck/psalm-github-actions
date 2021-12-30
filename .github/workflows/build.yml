@@ -1,6 +1,7 @@
 name: Trigger rebuild
 
 on:
+  push:
   schedule:
         - cron: '03 */4 * * *'
 
