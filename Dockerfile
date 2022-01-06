@@ -13,10 +13,10 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Install Tini - https://github.com/krallin/tini
 
-RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip
+RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip zip
 
 # Install PHP extensions
-RUN docker-php-ext-configure intl \
+RUN docker-php-ext-configure intl zip \
     && docker-php-ext-configure pcntl --enable-pcntl \
     && docker-php-ext-install intl pcntl gd zip \
     && docker-php-ext-enable sodium
