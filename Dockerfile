@@ -1,4 +1,4 @@
-FROM php:7.4-alpine
+FROM php:7.4-fpm
 
 LABEL "com.github.actions.name"="Psalm"
 LABEL "com.github.actions.description"="A static analysis tool for finding errors in PHP applications"
@@ -13,13 +13,11 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Install Tini - https://github.com/krallin/tini
 
-RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip zip zlib
+RUN apt-get install libcurl4 libcurl4-openssl-dev libzip-dev libpq-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev vim supervisor git less -y
 
 # Install PHP extensions
-RUN docker-php-ext-configure intl \
-    && docker-php-ext-configure pcntl --enable-pcntl \
-    && docker-php-ext-install intl pcntl gd zip \
-    && docker-php-ext-enable sodium
+RUN docker-php-ext-install pcntl opcache soap zip pdo_pgsql pdo_mysql intl mysqli bcmath
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install gd
     
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
