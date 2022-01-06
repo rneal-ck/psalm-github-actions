@@ -13,7 +13,8 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip zip zlib
 
-RUN docker-php-ext-configure intl zip \
+RUN docker-php-ext-configure intl \ 
+    && docker-php-ext-configure zip --with-libzip=/usr/include \
     && docker-php-ext-configure pcntl --enable-pcntl \
     && docker-php-ext-install intl pcntl gd zip \
     && docker-php-ext-enable sodium
