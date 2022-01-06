@@ -11,7 +11,7 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Code borrowed from mickaelandrieu/psalm-ga which in turn borrowed from phpqa/psalm
 
-RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip-dev zip zlib
+RUN apk add --no-cache tini git openssh-client icu-dev libpng-dev libzip-dev zip zlib
 
 RUN docker-php-ext-configure intl \ 
     && docker-php-ext-configure zip \
