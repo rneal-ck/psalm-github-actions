@@ -16,7 +16,7 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 RUN apk add --no-cache tini git openssh-client icu-dev libpng
 
 # Install PHP extensions
-RUN docker-php-ext-configure intl gd \
+RUN docker-php-ext-configure intl \
     && docker-php-ext-configure pcntl --enable-pcntl \
     && docker-php-ext-install intl pcntl gd \
     && docker-php-ext-enable sodium
