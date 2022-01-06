@@ -13,7 +13,7 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Install Tini - https://github.com/krallin/tini
 
-RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip zip
+RUN apk add --no-cache tini git openssh-client icu-dev libpng libzip zip zlib1g
 
 # Install PHP extensions
 RUN docker-php-ext-configure intl \
