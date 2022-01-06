@@ -13,6 +13,7 @@ LABEL "maintainer"="Matt Brown <github@muglug.com>"
 
 # Install Tini - https://github.com/krallin/tini
 
+RUN apt-get update
 RUN apt-get install libcurl4 libcurl4-openssl-dev libzip-dev libpq-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libxml2-dev vim supervisor git less -y
 
 # Install PHP extensions
