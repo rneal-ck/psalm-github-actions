@@ -16,7 +16,7 @@ RUN apk add --no-cache tini git openssh-client icu-dev libpng-dev libzip-dev zip
 RUN docker-php-ext-configure intl \ 
     && docker-php-ext-configure zip \
     && docker-php-ext-configure pcntl --enable-pcntl \
-    && docker-php-ext-install intl pcntl gd zip \
+    && docker-php-ext-install intl pcntl gd zip sockets \
     && docker-php-ext-enable sodium
     
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
