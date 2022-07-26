@@ -49,6 +49,17 @@ if [ -n "$INPUT_WORKING_DIRECTORY" ]; then
     cd "$INPUT_WORKING_DIRECTORY"
 fi
 
+if [ -n "$INPUT_RELATIVE_DIR" ]
+then
+    if [ -d "$INPUT_RELATIVE_DIR" ]; then
+        echo "changing directory into $INPUT_RELATIVE_DIR"
+        cd "$INPUT_RELATIVE_DIR"
+    else
+    	echo "given relative_dir not existing"
+	exit 1
+    fi
+fi
+
 if test -f "composer.json"; then
     IGNORE_PLATFORM_REQS=""
     if [ "$CHECK_PLATFORM_REQUIREMENTS" = "false" ] || [ "$INPUT_COMPOSER_IGNORE_PLATFORM_REQS" = "true" ]; then
