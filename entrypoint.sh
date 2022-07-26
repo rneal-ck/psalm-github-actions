@@ -45,10 +45,6 @@ else
     echo "No private keys supplied"
 fi
 
-if [ -n "$INPUT_WORKING_DIRECTORY" ]; then
-    cd "$INPUT_WORKING_DIRECTORY"
-fi
-
 if [ -n "$INPUT_RELATIVE_DIR" ]
 then
     if [ -d "$INPUT_RELATIVE_DIR" ]; then
